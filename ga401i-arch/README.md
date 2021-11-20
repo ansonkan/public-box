@@ -37,7 +37,19 @@ I've mistakenly wiped out the whole disk while partitioning because I thought I 
 
 ### Remeber to setup the system time and hardware clock correctly
 
-Otherwise, there might be trouble browsing websites. https://security.stackexchange.com/questions/24704/system-time-and-certificates
+Otherwise, there might be trouble browsing websites. https://security.stackexchange.com/questions/24704/system-time-and-certificates. I remembered I had them setup properly during the installation but turned out the system clock is not synchronised at the time. After setting it according to the [guide](https://wiki.archlinux.org/title/installation_guide), everything started working again.
+
+Run `timedatectl status` and should get `System clock synchronized: yes`:
+
+```
+                              Local time: Sun 2021-11-21 00:17:34 HKT
+                      Universal time: Sat 2021-11-20 16:17:34 UTC
+                                RTC time: Sat 2021-11-20 16:17:34
+                             Time zone: Hongkong (HKT, +0800)
+System clock synchronized: yes
+                           NTP service: active
+                      RTC in local TZ: no
+```
 
 ### Touchpad settings ([ref](https://wiki.archlinux.org/title/libinput))
 

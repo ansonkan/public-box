@@ -2,7 +2,11 @@
 
 This is a note to self in case I need to setup Arch on another machine. This isn't meant to be a guide.
 
-As far as I remember,  I first followed the first 2 videos with the installation guide from Arch to complete the installation. The videos basically demonstrates the steps from the installation guide with a few useful extra setup, such as setting up `sudo`. Second, setup `dwm`, `st`, `dmenu` following the 3rd video. Third, followed through the Arch Setup Guide from ASUS Linux. Finally, setup `slstatus`.
+As far as I remember,  I:
+1. followed the first 2 videos with the installation guide from Arch to complete the installation. The videos basically demonstrates the steps from the installation guide with a few useful extra setup, such as setting up `sudo`.
+2. setup `dwm`, `st`, `dmenu` following the 3rd video. 
+3. followed through the Arch Setup Guide from ASUS Linux. 
+4. setup `slstatus`.
 
 ## Recourses
 

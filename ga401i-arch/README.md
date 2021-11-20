@@ -2,6 +2,8 @@
 
 This is a note to self in case I need to setup Arch on another machine. This isn't meant to be a guide.
 
+As far as I remember,  I first followed the first 2 videos with the installation guide from Arch to complete the installation. The videos basically demonstrates the steps from the installation guide with a few useful extra setup, such as setting up `sudo`. Second, setup `dwm`, `st`, `dmenu` following the 3rd video. Third, followed through the Arch Setup Guide from ASUS Linux. Finally, setup `slstatus`.
+
 ## Recourses
 
 ### Youtube
@@ -19,6 +21,66 @@ This is a note to self in case I need to setup Arch on another machine. This isn
 
 1. [ROG for Linux](https://discord.com/invite/4ZKGd7Un5t)
 
-The Arch documation itself is really detailed but it is always safer to have video tutorials to follow along. The first 2 Youtube videos walk through all of the step from the installation guide from Arch with a few extra useful setups, such as setting up `sudo`. The 3rd video is for `dwm` as the title suggests. `dwm` is picked becaues it is a tiling window manager and it works out-of-the-box with other [Suckless](https://suckless.org/) softwares, namely `st`, `dmenu` and `slstatus`. They all have the same are installed in the same way and have a `config.h` header file for further configuration. Patches could be found on the Suckless website as well.
+## Notes / Troubleshooting
 
-## Steps
+### Add boot parameter before the installation ([ref](https://asus-linux.org/wiki/arch-guide/#installing))
+
+On the menu selecting boot option, press `e` , then append this following parameter at the end, then press `enter` to boot.
+
+```
+modprobe.blacklist=nouveau
+```
+
+### Be careful when partitioning with `fdisk`
+
+I've mistakenly wiped out the whole disk while partitioning because I thought I need to select the whole disk as the target then create new partitions in the free space by specifying the first and last sections according to the sections gab. This approach is not mentioned in any resource from above still I've done this because I didn't see the "free space" like the 2nd video does with `cfdisk`. So I still don't know what is the correct way to create partitions in the free space without affecting existing partitions. So be careful next time. At least, try to find a way to back up first.
+
+### No audio
+
+After unmute everything with `alsamixer`, there was still no audio at the time. Having `pipewire` and `pipewire-alsa` insatlled fixed that.
+
+### No audio in games that runs with Proton
+
+Having the following packages installed fixed that:
+
+```
+local/easyeffects 6.1.4-1
+    Audio Effects for Pipewire applications
+local/gst-plugin-pipewire 1:0.3.40-1
+    Multimedia graph framework - pipewire plugin
+local/lib32-pipewire 1:0.3.39-1
+    Low-latency audio/video router and processor - 32-bit client library
+local/libpipewire02 0.2.7-2
+    Low-latency audio/video router and processor - legacy client library
+local/pipewire 1:0.3.40-1
+    Low-latency audio/video router and processor
+local/pipewire-alsa 1:0.3.40-1
+    Low-latency audio/video router and processor - ALSA configuration
+local/pipewire-docs 1:0.3.40-1
+    Low-latency audio/video router and processor - documentation
+local/pipewire-jack 1:0.3.40-1
+    Low-latency audio/video router and processor - JACK support
+local/pipewire-media-session 1:0.4.1-1
+    Example session manager for PipeWire
+local/pipewire-pulse 1:0.3.40-1
+    Low-latency audio/video router and processor - PulseAudio replacement
+```
+
+The list of packages is shared from a member of the ROG for Linux discord channel. I installed all of them at once, so I don't know which of them exactly fixed the issue.
+
+### `dwm` media key keybindings
+
+Import [XF86keysym.h](https://cgit.freedesktop.org/xorg/proto/x11proto/tree/XF86keysym.h) into the `config.h`. The volume up/down keys are included in it.
+
+### Start X with fish shell ([ref](https://wiki.archlinux.org/title/Fish#Start_X_at_login))
+
+Add the following to the bottom of the `~/.config/fish/config.fish`.
+
+```
+# Start X at login
+if status is-login
+    if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
+        exec startx -- -keeptty
+    end
+end
+```

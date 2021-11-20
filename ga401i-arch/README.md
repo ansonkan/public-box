@@ -14,8 +14,8 @@ As far as I remember,  I first followed the first 2 videos with the installation
 
 ### Written Guides
 
-1. [Installation Guide](https://wiki.archlinux.org/title/installation_guide) from [archlinux](https://archlinux.org/)
-2. [Arch Setup Guide](https://asus-linux.org/wiki/arch-guide/) from [AUSU Linux](https://asus-linux.org/)
+1. [Installation Guide](https://wiki.archlinux.org/title/installation_guide)
+2. [Arch Setup Guide](https://asus-linux.org/wiki/arch-guide/)
 
 ### Discord
 
@@ -34,6 +34,22 @@ modprobe.blacklist=nouveau
 ### Be careful when partitioning with `fdisk`
 
 I've mistakenly wiped out the whole disk while partitioning because I thought I need to select the whole disk as the target then create new partitions in the free space by specifying the first and last sections according to the sections gab. This approach is not mentioned in any resource from above still I've done this because I didn't see the "free space" like the 2nd video does with `cfdisk`. So I still don't know what is the correct way to create partitions in the free space without affecting existing partitions. So be careful next time. At least, try to find a way to back up first.
+
+### Touchpad settings ([ref](https://wiki.archlinux.org/title/libinput))
+
+Open `/usr/share/X11/xorg.conf.d/40-libinput.conf`, then modify the following section accordingly:
+
+```
+Section "InputClass"
+        Identifier "libinput touchpad catchall"
+        MatchIsTouchpad "on"
+        MatchDevicePath "/dev/input/event*"
+        Driver "libinput"
+        Option "Tapping" "on"
+        Option "TappingButtonMap" "lrm"
+        Option "NaturalScrolling" "true"
+EndSection
+```
 
 ### No audio
 
@@ -83,4 +99,13 @@ if status is-login
         exec startx -- -keeptty
     end
 end
+```
+
+### Important font packages
+
+```
+awesome-terminal-fonts
+noto-fonts
+noto-fonts-cjk
+noto-fonts-emoji
 ```

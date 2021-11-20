@@ -35,6 +35,10 @@ modprobe.blacklist=nouveau
 
 I've mistakenly wiped out the whole disk while partitioning because I thought I need to select the whole disk as the target then create new partitions in the free space by specifying the first and last sections according to the sections gab. This approach is not mentioned in any resource from above still I've done this because I didn't see the "free space" like the 2nd video does with `cfdisk`. So I still don't know what is the correct way to create partitions in the free space without affecting existing partitions. So be careful next time. At least, try to find a way to back up first.
 
+### Remeber to setup the system time and hardware clock correctly
+
+Otherwise, there might be trouble browsing websites. https://security.stackexchange.com/questions/24704/system-time-and-certificates
+
 ### Touchpad settings ([ref](https://wiki.archlinux.org/title/libinput))
 
 Open `/usr/share/X11/xorg.conf.d/40-libinput.conf`, then modify the following section accordingly:
@@ -109,3 +113,7 @@ noto-fonts
 noto-fonts-cjk
 noto-fonts-emoji
 ```
+
+### Only need drivers mentioned in the ASUS Linux guide ([ref](https://asus-linux.org/wiki/arch-guide/#custom-kernel-drivers-fixes-hardware-support))
+
+Remember to insstall `nvidia-dkms` which is mentioned in the guide as well.

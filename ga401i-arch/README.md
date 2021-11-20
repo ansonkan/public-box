@@ -53,7 +53,7 @@ EndSection
 
 ### No audio
 
-After unmute everything with `alsamixer`, there was still no audio at the time. Having `pipewire` and `pipewire-alsa` insatlled fixed that.
+After unmute everything with `alsamixer`, there was still no audio at the time. Having `pipewire` and `pipewire-alsa` installed fixed that.
 
 ### No audio in games that runs with Proton
 

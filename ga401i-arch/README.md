@@ -132,4 +132,20 @@ noto-fonts-emoji
 
 ### Only need drivers mentioned in the ASUS Linux guide ([ref](https://asus-linux.org/wiki/arch-guide/#custom-kernel-drivers-fixes-hardware-support))
 
-Remember to install `nvidia-dkms` which is mentioned in the guide as well.
+Remember to install `nvidia-dkms` along with the custom kernel and patches, which are all mentioned in the guide.
+
+### Multi-screen ([ref](https://wiki.archlinux.org/title/Multihead))
+
+Create `/etc/X11/xorg.conf.d/10-monitor.conf` and add the following to set the screen position:
+
+```
+Section "Monitor"
+        Identifier "eDP-1"
+        Option "Primary" "true"
+EndSection
+
+Section "Monitor"
+        Identifier "HDMI-1"
+        Option "Above" "eDP-1"
+EndSection
+```

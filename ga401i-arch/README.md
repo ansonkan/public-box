@@ -149,3 +149,11 @@ Section "Monitor"
         Option "Above" "eDP-1"
 EndSection
 ```
+
+### Use oh-my-fish plugin for nvm ([ref](https://github.com/derekstavis/plugin-nvm))
+
+1. Switch to `bash`
+2. Copy the installation command from [nvm github READMD.md](https://github.com/nvm-sh/nvm#installing-and-updating)
+3. Install `nvm`
+4. Switch to `fish`
+5. Run `omf install nvm` to install the plugin for `nvm`

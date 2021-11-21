@@ -1,9 +1,9 @@
 # GA401I Arch Setup
 
-This is a note to self in case I need to setup Arch on another machine. This isn't meant to be a guide.
+This is a note to self in case I need to set up Arch on another machine. This isn't meant to be a guide.
 
 As far as I remember,  I:
-1. followed the first 2 videos with the installation guide from Arch to complete the installation. The videos basically demonstrates the steps from the installation guide with a few useful extra setup, such as setting up `sudo`.
+1. followed the first 2 videos with the installation guide from Arch to complete the installation. The videos demonstrate the steps from the installation guide with a few useful extra setup, such as setting up `sudo`.
 2. setup `dwm`, `st`, `dmenu` following the 3rd video. 
 3. followed through the Arch Setup Guide from ASUS Linux. 
 4. setup `slstatus`.
@@ -39,9 +39,9 @@ modprobe.blacklist=nouveau
 
 I've mistakenly wiped out the whole disk while partitioning because I thought I need to select the whole disk as the target then create new partitions in the free space by specifying the first and last sections according to the sections gab. This approach is not mentioned in any resource from above still I've done this because I didn't see the "free space" like the 2nd video does with `cfdisk`. So I still don't know what is the correct way to create partitions in the free space without affecting existing partitions. So be careful next time. At least, try to find a way to back up first.
 
-### Remeber to setup the system time and hardware clock correctly
+### Remember to set up the system time and hardware clock correctly
 
-Otherwise, there might be trouble browsing websites. https://security.stackexchange.com/questions/24704/system-time-and-certificates. I remembered I had them setup properly during the installation but turned out the system clock is not synchronised at the time. After setting it according to the [guide](https://wiki.archlinux.org/title/installation_guide), everything started working again.
+Otherwise, there might be trouble browsing websites. https://security.stackexchange.com/questions/24704/system-time-and-certificates. I remembered I had them set up properly during the installation but turned out the system clock is not synchronized at the time. After setting it according to the [guide](https://wiki.archlinux.org/title/installation_guide), everything started working again.
 
 Run `timedatectl status` and should get `System clock synchronized: yes`:
 
@@ -73,7 +73,7 @@ EndSection
 
 ### No audio
 
-After unmute everything with `alsamixer`, there was still no audio at the time. Having `pipewire` and `pipewire-alsa` installed fixed that.
+After unmuting everything with `alsamixer`, there was still no audio at the time. Having `pipewire` and `pipewire-alsa` installed fixed that.
 
 ### No audio in games that runs with Proton
 
@@ -132,4 +132,4 @@ noto-fonts-emoji
 
 ### Only need drivers mentioned in the ASUS Linux guide ([ref](https://asus-linux.org/wiki/arch-guide/#custom-kernel-drivers-fixes-hardware-support))
 
-Remember to insstall `nvidia-dkms` which is mentioned in the guide as well.
+Remember to install `nvidia-dkms` which is mentioned in the guide as well.
